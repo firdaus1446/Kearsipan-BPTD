@@ -18,14 +18,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>LTE</a>
+    <img src="{{asset('gambar/logo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <br>
+    <a href="#"><b>Kearsipan BPTD Kelas II Kalimantan Selatan</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="" method="post">
+      <form action="{{route('postlogin')}}" method="post">
         {{ csrf_field() }}
         <div class="input-group mb-3">
           <input type="email" class="form-control" name="email"  placeholder="Email">

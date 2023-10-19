@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +24,10 @@ Route::get('/login', function () {
 Route::get('/beranda', function () {
     return view('beranda');
 });
+
+// Login & Registrasi
+Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
+// ->middleware('isBeranda');
+Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+// Route::get('/registrasi', [LoginController::class,'registrasi'])->name('registrasi')->middleware('isBeranda');
+// Route::post('/simpanregistrasi', [LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
