@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">Data Arsip</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+              <li class="breadcrumb-item active">Data Arsip</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,14 +40,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-               <h3>Kearsipan BPTD Kelas II Kalimantan Selatan</h3>
+        <div class="content">
+            <div class="card card-info card-outline">
+              <div class="card-header">
+                  <div class="card-tools">
+                      <a href="{{route ('createuser')}}" class="btn btn-success">Tambah Data Arsip<i class="fas fa-plus-square"></i></a>
+                  </div>
               </div>
-            </div>
+              <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>No</th>
+                    <th>Kode Arsip</th>
+                    <th>Informasi</th>
+                    <th>Nomor Berkas</th>
+                    <th>Jumlah</th>
+                    <th>No Item</th>
+                    <th>Isi</th>
+                    <th>Kurun Waktu</th>
+                    <th>Jumlah</th>
+                    <th>Keterangan</th>
+                    <th>Lokasi</th>
+                    <th>Aksi</th>
+                </tr>
+
+                {{-- @foreach ($dtuser as $item) 
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->name}}</td>
+                    <td>{{ $item->email}}</td>
+
+                    <td>
+                        <a href="{{ url('edituser',$item->id) }}">Edit</a>
+                         | 
+                        <a href="{{ url('deleteuser',$item->id) }}" style="color:red">Delete</a>
+                    </td>
+                </tr>
+                @endforeach --}}
+            </table>
+        </div>
+
 
            
           </div>

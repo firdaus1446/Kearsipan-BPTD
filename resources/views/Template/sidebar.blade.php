@@ -44,33 +44,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{route ('datauser')}}" class="nav-link"> --}}
+                <a href="{{route ('datauser')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data User</p>
                 </a>
               </li>
               <li class="nav-item">
-                {{-- <a href="{{route ('datapeminjam')}}" class="nav-link"> --}}
+                <a href="{{route ('dataarsip')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Peminjam</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{route ('dataruangan')}}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Ruangan</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Daftar Arsip</p>
                 </a>
               </li>
             </ul>

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArsipController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +34,11 @@ Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 // Route::get('/registrasi', [LoginController::class,'registrasi'])->name('registrasi')->middleware('isBeranda');
 // Route::post('/simpanregistrasi', [LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
+
+// Data user
+Route::get('/datauser', [AdminController::class,'index'])->name('datauser');
+Route::get('/createuser', [AdminController::class,'create'])->name('createuser');
+Route::post('/simpanuser', [AdminController::class,'store'])->name('simpanuser');
+
+// Data Arsip
+Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip');

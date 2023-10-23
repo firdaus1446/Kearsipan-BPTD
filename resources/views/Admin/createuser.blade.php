@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">Data User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+              <li class="breadcrumb-item active">Data User</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,14 +40,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-               <h3>Kearsipan BPTD Kelas II Kalimantan Selatan</h3>
+        <div class="content">
+            <div class="card card-info card-outline">
+              <div class="card-header">
+                <h3>Tambah Data User</h3>
               </div>
-            </div>
+              <div class="card-body">
+                <form action="{{route('simpanuser')}}" method="post" enctype="multipart/form-data">
+                 {{ csrf_field() }}
+                 <div class="form-group">
+                     <input type="text" id="name" name="name" class="form-control" placeholder="Full Name">
+                 </div>
+                 <div class="form-group">
+                     <input type="email" id="email" name="email" class="form-control" placeholder="email">
+                 </div>
+                 <div class="form-group">
+                     <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                 </div>
+                 <div class="form-group">
+                     <button type="submit" class="btn btn-success">Simpan</button>
+                     <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>
+                 </div>
+                </form>
+             </div>
+
 
            
           </div>
