@@ -70,7 +70,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $us = User::findorfail($id);
+        return view('Admin.edituser',compact('us'));
     }
 
     /**
@@ -82,7 +83,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $us = User::findorfail($id);
+        $us->update($request->all());
+        return redirect('datauser');
     }
 
     /**
@@ -93,6 +96,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $us = User::findorfail($id);
+        $us->delete();
+        return back()->with('info', 'Data Berhasil Di Hapus');
     }
 }

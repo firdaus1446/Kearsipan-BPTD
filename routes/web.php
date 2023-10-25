@@ -39,6 +39,9 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::get('/datauser', [AdminController::class,'index'])->name('datauser');
 Route::get('/createuser', [AdminController::class,'create'])->name('createuser');
 Route::post('/simpanuser', [AdminController::class,'store'])->name('simpanuser');
+Route::get('/edituser/{id}', [AdminController::class,'edit'])->name('edituser');
+Route::post('/updateuser/{id}', [AdminController::class,'update'])->name('updateuser');
+Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('deleteuser');
 
 // Data Arsip
 Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip');

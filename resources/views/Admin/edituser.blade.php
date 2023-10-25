@@ -25,12 +25,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data User</h1>
+            <h1 class="m-0">Edit Data User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data User</li>
+              <li class="breadcrumb-item active">Edit Data User</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,37 +43,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content">
             <div class="card card-info card-outline">
               <div class="card-header">
-                  <div class="card-tools">
-                      <a href="{{route ('createuser')}}" class="btn btn-success">Tambah User<i class="fas fa-plus-square"></i></a>
-                  </div>
               </div>
               <div class="card-body">
-            <table class="table table-bordered">
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Aksi</th>
-                </tr>
-
-                @foreach ($dtuser as $item) 
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->name}}</td>
-                    <td>{{ $item->email}}</td>
-
-                    <td>
-                        <a href="{{ url('edituser',$item->id) }}" class="btn btn-primary">Edit</a>
-                         
-                        <a href="" class="btn btn-danger delete">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </table>
-        </div>
-            <div class="card-footer">
-
-            </div>
+                <form action="{{ url('updateuser',$us->id )}}" method="post" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <div class="form-group">
+                     <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" value="{{ $us->name }}">
+                 </div>
+                 <div class="form-group">
+                     <input type="email" id="email" name="email" class="form-control" placeholder="email" value="{{ $us->email }}">
+                 </div>
+                 <div class="form-group">
+                     <button type="submit" class="btn btn-success">Simpan</button>
+                     <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>
+                 </div>
+                </form>
+             </div>
 
 
            
@@ -109,28 +94,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
     @include('Template.script')
 </body>
-<script>
-            $('.delete').click( function(){
-              // var nameid = $(this).attr($item->name)
-              Swal.fire({
-            title: 'Yakin ?',
-            text: "Kamu Menghapus User Ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location = "/deleteuser/{id}"
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-          });
-
-            });
-</script>
 </html>
