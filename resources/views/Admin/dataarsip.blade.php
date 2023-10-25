@@ -64,19 +64,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>Aksi</th>
                 </tr>
 
-                {{-- @foreach ($dtuser as $item) 
+                @foreach ($dtarsip as $item) 
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->name}}</td>
-                    <td>{{ $item->email}}</td>
+                    <td>{{ $item->kode_arsip}}</td>
+                    <td>{{ $item->informasi}}</td>
+                    <td>{{ $item->nomor}}</td>
+                    <td>{{ $item->jumlah_berkas}}</td>
+                    <td>{{ $item->no_item}}</td>
+                    <td>{{ $item->isi}}</td>
+                    <td>{{ $item->kurun_waktu}}</td>
+                    <td>{{ $item->jumlah}}</td>
+                    <td>{{ $item->keterangan}}</td>
+                    <td>{{ $item->lokasi}}</td>
 
                     <td>
-                        <a href="{{ url('edituser',$item->id) }}">Edit</a>
-                         | 
-                        <a href="{{ url('deleteuser',$item->id) }}" style="color:red">Delete</a>
+                        <a href="{{ url('edituser',$item->id) }}" class="btn btn-primary">Edit</a>
+                         
+                        <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </table>
         </div>
 

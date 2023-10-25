@@ -45,13 +45,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route ('datauser')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-id-badge"></i>
                   <p>Data User</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route ('dataarsip')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-book-open"></i>
                   <p>Daftar Arsip</p>
                 </a>
               </li>
@@ -59,7 +59,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('logout')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
                 

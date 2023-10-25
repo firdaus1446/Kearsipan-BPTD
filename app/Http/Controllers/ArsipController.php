@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Arsip;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ArsipController extends Controller
 {
@@ -13,7 +16,8 @@ class ArsipController extends Controller
      */
     public function index()
     {
-        return view('Admin.dataarsip');
+        $dtarsip = Arsip::all();
+        return view('Admin.dataarsip',compact('dtarsip'));
     }
 
     /**
