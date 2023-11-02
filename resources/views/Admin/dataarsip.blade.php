@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('beranda')}}">Home</a></li>
               <li class="breadcrumb-item active">Data Arsip</li>
             </ol>
           </div><!-- /.col -->
@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card card-info card-outline">
               <div class="card-header">
                   <div class="card-tools">
-                      <a href="{{route ('createuser')}}" class="btn btn-success">Tambah Data Arsip<i class="fas fa-plus-square"></i></a>
+                      
                   </div>
               </div>
               <div class="card-body">
@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>No Item</th>
                     <th>Isi</th>
                     <th>Kurun Waktu</th>
-                    <th>Jumlah</th>
+                    <th>File</th>
                     <th>Keterangan</th>
                     <th>Lokasi</th>
                     <th>Aksi</th>
@@ -74,14 +74,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <td>{{ $item->no_item}}</td>
                     <td>{{ $item->isi}}</td>
                     <td>{{ $item->kurun_waktu}}</td>
-                    <td>{{ $item->jumlah}}</td>
+                    <td>{{ $item->file}}</td>
                     <td>{{ $item->keterangan}}</td>
                     <td>{{ $item->lokasi}}</td>
 
                     <td>
-                        <a href="{{ url('edituser',$item->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url('editarsip',$item->id) }}" class="btn btn-primary">Edit</a>
                          
-                        <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ url('deletearsip',$item->id) }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -121,5 +121,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
     @include('Template.script')
+    @include('sweetalert::alert')
 </body>
 </html>

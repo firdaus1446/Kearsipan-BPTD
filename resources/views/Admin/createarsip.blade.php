@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ url('beranda')}}">Home</a></li>
-              <li class="breadcrumb-item active">Tambah Data User</li>
+              <li class="breadcrumb-item active">Tambah Arsip</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,27 +43,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content">
             <div class="card card-info card-outline">
               <div class="card-header">
-                <h3>Tambah Data User</h3>
+                <h3>Tambah Arsip</h3>
               </div>
               <div class="card-body">
-                <form action="{{route('simpanuser')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('simpanarsip')}}" method="post" enctype="multipart/form-data">
                  {{ csrf_field() }}
                  <div class="form-group">
-                     <input type="text" id="name" name="name" class="form-control" placeholder="Full Name">
+                     <input type="text" id="kode_arsip" name="kode_arsip" class="form-control" placeholder="Kode Arsip">
                  </div>
                  <div class="form-group">
-                     <input type="email" id="email" name="email" class="form-control" placeholder="email">
+                     <input type="text" id="informasi" name="informasi" class="form-control" placeholder="informasi">
                  </div>
                  <div class="form-group">
-                     <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                     <div class="form-group">
-                      <th>Masukan Gambar</th>
-                      <input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
-                  </div>
+                     <input type="text" id="nomor" name="nomor" class="form-control" placeholder="nomor">
                  </div>
+                 <div class="form-group">
+                    <input type="text" id="jumlah_berkas" name="jumlah_berkas" class="form-control" placeholder="Jumlah">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="no_item" name="no_item" class="form-control" placeholder="No Item">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="isi" name="isi" class="form-control" placeholder="isi">
+                </div>
+                <div class="form-group">
+                    <input type="date" id="kurun_waktu" name="kurun_waktu" class="form-control" placeholder="Kurun Waktu">
+                </div>
+                <div class="form-group">
+                    <input type="file" id="file" name="file" class="form-control" placeholder="File">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Lokasi">
+                </div>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>
-                     <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>
                  </div>
                 </form>
              </div>
@@ -101,5 +117,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
     @include('Template.script')
+    @include('sweetalert::alert')
 </body>
 </html>

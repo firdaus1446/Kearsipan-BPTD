@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('beranda')}}">Home</a></li>
               <li class="breadcrumb-item active">Edit Data User</li>
             </ol>
           </div><!-- /.col -->
@@ -53,6 +53,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  <div class="form-group">
                      <input type="email" id="email" name="email" class="form-control" placeholder="email" value="{{ $us->email }}">
                  </div>
+                 @if ($us->foto)
+                <div class="mb-3">
+                  <img style="max-width:100px;max-height:100px" src="{{ url('image').'/'.$us->foto}}"/>
+                </div>
+            @endif
+            <div class="form-group">
+              <th>Masukan Gambar</th>
+              <input type="file" id="foto" name="foto" class="form-control" placeholder="image">
+          </div>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>
                      <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>

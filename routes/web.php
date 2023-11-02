@@ -45,3 +45,8 @@ Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('delete
 
 // Data Arsip
 Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip');
+Route::get('/createarsip', [ArsipController::class,'create'])->name('createarsip');
+Route::post('/simpanarsip', [ArsipController::class,'store'])->name('simpanarsip');
+Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip');
+Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updatearsip');
+Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip');

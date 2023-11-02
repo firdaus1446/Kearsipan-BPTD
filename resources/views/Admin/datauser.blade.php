@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('beranda')}}">Home</a></li>
               <li class="breadcrumb-item active">Data User</li>
             </ol>
           </div><!-- /.col -->
@@ -53,6 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
 
@@ -61,11 +62,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name}}</td>
                     <td>{{ $item->email}}</td>
+                    <td>
+                      @if ($item->foto)
+                        <img style="max-width:75px;max-height:75px" src="{{ url('image').'/'.$item->foto }}"/>
+                          
+                      @endif
+                    </td>
 
                     <td>
                         <a href="{{ url('edituser',$item->id) }}" class="btn btn-primary">Edit</a>
-                         
-                        <a href="" class="btn btn-danger delete">Delete</a>
+                        {{-- <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger delete">Delete</a> --}}
+                        <a href="{{ url('deleteuser', $item->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                        {{-- <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a> --}}
+
+
                     </td>
                 </tr>
                 @endforeach
@@ -108,8 +118,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
     @include('Template.script')
+    @include('sweetalert::alert')
 </body>
-<script>
+{{-- <script>
             $('.delete').click( function(){
               // var nameid = $(this).attr($item->name)
               Swal.fire({
@@ -122,7 +133,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location = "/deleteuser/{id}"
               Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
@@ -130,7 +140,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               )
             }
           });
-
             });
-</script>
+</script> --}}
 </html>

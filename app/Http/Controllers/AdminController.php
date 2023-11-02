@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 
 class AdminController extends Controller
@@ -18,6 +19,11 @@ class AdminController extends Controller
     {
         $dtuser = User::all();
         return view('Admin.datauser',compact('dtuser'));
+
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        return view('Admin.datauser', compact('dtuser'));
     }
 
     /**
@@ -39,16 +45,23 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+    $foto_file = $request->file('foto');
+    $foto_ekstensi = $foto_file->extension();
+    $foto_nama = date('ymdhis').".". $foto_ekstensi;
+    $foto_file->move(public_path('image'), $foto_nama);
+
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'foto' => $foto_nama,
             'remember_token' => Str::random(10),
 
         ]);
 
 
-        return redirect('datauser');
+        return redirect('datauser')->with('success', 'Data Berhasil Di Buat!');
     }
 
     /**
@@ -83,9 +96,28 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ];
+
+        if($request->hasFile('foto')){
+            $foto_file = $request->file('foto');
+        $foto_ekstensi = $foto_file->extension();
+        $foto_nama = date('ymdhis').".". $foto_ekstensi;
+        $foto_file->move(public_path('image'), $foto_nama);
+
         $us = User::findorfail($id);
-        $us->update($request->all());
-        return redirect('datauser');
+        File::delete(public_path('image').'/'.
+        $us->foto);
+        
+        $data['foto'] = $foto_nama;
+
+        }
+
+        $us = User::findorfail($id);
+        $us->update($data);
+        return redirect('datauser')->with('success', 'Data Berhasil Di Update ');
     }
 
     /**
@@ -97,7 +129,15 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $us = User::findorfail($id);
+        File::delete(public_path('image').'/'.$us->foto);
         $us->delete();
         return back()->with('info', 'Data Berhasil Di Hapus');
+
+        // $dtuser = User::findorfail($id);
+
+        // $title = 'Delete User!';
+        // $text = "Are you sure you want to delete?";
+        // confirmDelete($title, $text);
+        // return view('Admin.datauser', compact('dtuser'));
     }
 }

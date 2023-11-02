@@ -20,7 +20,7 @@ class Arsip extends Model
         'no_item',
         'isi',
         'kurun_waktu',
-        'jumlah',
+        'file',
         'keterangan',
         'lokasi',
     ];
