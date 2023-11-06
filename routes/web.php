@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArsipController;
+use App\Http\Controllers\BerandaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -17,7 +18,7 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Login');
 });
 
 Route::get('/login', function () {
@@ -50,3 +51,6 @@ Route::post('/simpanarsip', [ArsipController::class,'store'])->name('simpanarsip
 Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip');
 Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updatearsip');
 Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip');
+
+// Dashboard
+Route::get('/beranda', [BerandaController::class,'index'])->name('beranda');

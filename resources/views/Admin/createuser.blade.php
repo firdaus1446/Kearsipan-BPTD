@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  <div class="form-group">
                      <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                      <div class="form-group">
-                      <th>Masukan Gambar</th>
+                      <th>* Wajib Masukan Gambar</th>
                       <input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
                   </div>
                  </div>

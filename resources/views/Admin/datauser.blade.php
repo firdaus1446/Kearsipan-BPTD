@@ -80,6 +80,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </tr>
                 @endforeach
             </table>
+            <br>
+            {{ $dtuser->links() }}
         </div>
             <div class="card-footer">
 

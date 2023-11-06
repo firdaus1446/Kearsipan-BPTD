@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $dtuser = User::all();
+        $dtuser = User::paginate(3);
         return view('Admin.datauser',compact('dtuser'));
 
         $title = 'Delete User!';

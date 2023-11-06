@@ -16,7 +16,7 @@ class ArsipController extends Controller
      */
     public function index()
     {
-        $dtarsip = Arsip::all();
+        $dtarsip = Arsip::paginate(3);
         return view('Admin.dataarsip',compact('dtarsip'));
     }
 

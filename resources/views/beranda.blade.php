@@ -25,13 +25,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">Sistem Kearsipan BPTD Kelas II Kalimantan Selatan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -39,19 +35,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-               <h3>Kearsipan BPTD Kelas II Kalimantan Selatan</h3>
-              </div>
-            </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
 
-           
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ $jumlah_user }}</h3>
+
+                <p>Data User</p>
+              </div>
+              <div class="icon">
+                <i class="inav-icon fas fa-id-badge"></i>
+              </div>
+              <a href="{{route ('datauser')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
           </div>
-          <!-- /.col-md-6 -->
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ $jumlah_arsip }}</h3>
+
+                <p>Data Arsip</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-book-open"></i>
+              </div>
+              <a href="{{route ('dataarsip')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>+</h3>
+
+                <p>Tambah Data Arsip</p>
+              </div>
+              <div class="icon">
+                <i class="nav-icon fas fa-plus-square"></i>
+              </div>
+              <a href="{{route ('createarsip')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+        </div>
+          <!-- ./col -->
+          <!-- ./col -->
+        </div>
           
           <!-- /.col-md-6 -->
         </div>
