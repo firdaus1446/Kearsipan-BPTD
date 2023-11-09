@@ -23,11 +23,11 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('Login');
-});
+})->middleware('isBeranda');
 
 Route::get('/beranda', function () {
     return view('beranda');
-});
+})->middleware('isLogin');
 
 // Login & Registrasi
 Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
@@ -51,6 +51,9 @@ Route::post('/simpanarsip', [ArsipController::class,'store'])->name('simpanarsip
 Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip');
 Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updatearsip');
 Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip');
+Route::get('/exportarsip', [ArsipController::class,'exportarsip'])->name('exportarsip');
+Route::get('/dataarsip/search', [ArsipController::class,'search'])->name('search');
+
 
 // Dashboard
-Route::get('/beranda', [BerandaController::class,'index'])->name('beranda');
+Route::get('/beranda', [BerandaController::class,'index'])->name('beranda')->middleware('isLogin');

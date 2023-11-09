@@ -48,34 +48,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body">
                 <form action="{{ url('updatearsip',$arsip->id )}}" method="post" enctype="multipart/form-data">
                  {{ csrf_field() }}
+                 <th>Kode Arsip</th>
                  <div class="form-group">
                      <input type="text" id="kode_arsip" name="kode_arsip" class="form-control" placeholder="Kode Arsip" value="{{ $arsip->kode_arsip }}">
                  </div>
+                 <th>Informasi</th>
                  <div class="form-group">
                      <input type="text" id="informasi" name="informasi" class="form-control" placeholder="informasi" value="{{ $arsip->informasi }}">
                  </div>
+                 <th>Nomor</th>
                  <div class="form-group">
                      <input type="text" id="nomor" name="nomor" class="form-control" placeholder="nomor" value="{{ $arsip->nomor }}">
                  </div>
+                 <th>Jumlah Berkas</th>
                  <div class="form-group">
                     <input type="text" id="jumlah_berkas" name="jumlah_berkas" class="form-control" placeholder="Jumlah" value="{{ $arsip->jumlah_berkas }}">
                 </div>
+                <th>No Item</th>
                 <div class="form-group">
                     <input type="text" id="no_item" name="no_item" class="form-control" placeholder="No Item" value="{{ $arsip->no_item }}">
                 </div>
+                <th>Isi</th>
                 <div class="form-group">
                     <input type="text" id="isi" name="isi" class="form-control" placeholder="isi" value="{{ $arsip->isi }}">
                 </div>
+                <th>Kurun Waktu</th>
                 <div class="form-group">
                     <input type="date" id="kurun_waktu" name="kurun_waktu" class="form-control" placeholder="Kurun Waktu" value="{{ $arsip->kurun_waktu }}">
                 </div>
-                <th>{{ $arsip->file }}</th>
+                <th>File </th><th>{{ $arsip->file }}</th>
                 <div class="form-group">
                     <input type="file" id="file" name="file" class="form-control" placeholder="File">
                 </div>
+                <th>Keterangan</th>
                 <div class="form-group">
                     <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan" value="{{ $arsip->keterangan }}">
                 </div>
+                <th>Lokasi</th>
                 <div class="form-group">
                     <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Lokasi" value="{{ $arsip->lokasi }}">
                 </div>

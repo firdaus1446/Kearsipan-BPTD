@@ -84,12 +84,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{route ('createarsip')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+       
           
           <!-- ./col -->
-        </div>
-          <!-- ./col -->
-          <!-- ./col -->
-        </div>
+
+      
           
           <!-- /.col-md-6 -->
         </div>
@@ -97,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

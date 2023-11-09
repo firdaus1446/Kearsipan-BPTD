@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportArsip;
+// use app\Http\Controllers\Controller;
 use App\Models\Arsip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Database\Eloquent\Model;
+
+
 
 class ArsipController extends Controller
 {
@@ -16,8 +22,12 @@ class ArsipController extends Controller
      */
     public function index()
     {
-        $dtarsip = Arsip::paginate(3);
+        $dtarsip = Arsip::paginate(10);
         return view('Admin.dataarsip',compact('dtarsip'));
+    }
+    
+    public function exportarsip(){
+        return Excel::download(new ExportArsip, 'Arsip.xlsx');
     }
 
     /**
@@ -39,10 +49,22 @@ class ArsipController extends Controller
     public function store(Request $request)
     {
         //  dd($request->all());
+        if ($request->hasFile('file')) {
         $doc = $request->file('file');
-        $doc_ekstensi = $doc->extension();
-        $doc_nama = date('ymdhis').".". $doc_ekstensi;
+        // $doc_ekstensi = $doc->extension();
+        // $doc_nama = date('ymdhis').".". $doc_ekstensi;
+        // Ambil nama asli dari file dokumen yang diunggah
+        $doc_nama_asli = $doc->getClientOriginalName();
+
+        // Dapatkan detik saat ini dalam format dua digit
+        $detik = date('is');
+
+        // Gabungkan nama asli dengan detik unggah
+        $doc_nama = $detik . '_' . $doc_nama_asli;
         $doc->move(public_path('dokumen'), $doc_nama);
+    } else {
+        $doc_nama = null;
+    }
     
             Arsip::create([
                 'kode_arsip' => $request->kode_arsip,
@@ -107,10 +129,19 @@ class ArsipController extends Controller
         ];
 
         if($request->hasFile('file')){
-            $doc_file = $request->file('file');
-        $doc_ekstensi = $doc_file->extension();
-        $doc_nama = date('ymdhis').".". $doc_ekstensi;
+        $doc_file = $request->file('file');
+        // $doc_ekstensi = $doc_file->extension();
+        // $doc_nama = date('ymdhis').".". $doc_ekstensi;
+        // Ambil nama asli dari file dokumen yang diunggah
+        $doc_nama_asli = $doc_file->getClientOriginalName();
+
+        // Dapatkan detik saat ini dalam format dua digit
+        $detik = date('is');
+
+        // Gabungkan nama asli dengan detik unggah
+        $doc_nama = $detik . '_' . $doc_nama_asli;
         $doc_file->move(public_path('dokumen'), $doc_nama);
+        
 
         $arsip = Arsip::findorfail($id);
         File::delete(public_path('dokumen').'/'.
@@ -138,4 +169,12 @@ class ArsipController extends Controller
         $arsip->delete();
         return back()->with('info', 'Data Berhasil Di Hapus');
     }
+
+    // public function search(Request $request){
+    //     if($request->has('search')) {
+    //         $dtarsip = Arsip::where('kode_arsip','LIKE','%')
+    //     }
+
+    // }
+
 }

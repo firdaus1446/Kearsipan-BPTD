@@ -43,49 +43,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content">
             <div class="card card-info card-outline">
               <div class="card-header">
+                <a href="{{route ('exportarsip')}}" class="btn btn-success">Export Excel</a>
                   <div class="card-tools">
-                      
                   </div>
               </div>
               <div class="card-body">
-            <table class="table table-bordered">
-                <tr>
-                    <th>No</th>
-                    <th>Kode Arsip</th>
-                    <th>Informasi</th>
-                    <th>Nomor Berkas</th>
-                    <th>Jumlah</th>
-                    <th>No Item</th>
-                    <th>Isi</th>
-                    <th>Kurun Waktu</th>
-                    <th>File</th>
-                    <th>Keterangan</th>
-                    <th>Lokasi</th>
-                    <th>Aksi</th>
-                </tr>
-
-                @foreach ($dtarsip as $item) 
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->kode_arsip}}</td>
-                    <td>{{ $item->informasi}}</td>
-                    <td>{{ $item->nomor}}</td>
-                    <td>{{ $item->jumlah_berkas}}</td>
-                    <td>{{ $item->no_item}}</td>
-                    <td>{{ $item->isi}}</td>
-                    <td>{{ $item->kurun_waktu}}</td>
-                    <td>{{ $item->file}}</td>
-                    <td>{{ $item->keterangan}}</td>
-                    <td>{{ $item->lokasi}}</td>
-
-                    <td>
-                        <a href="{{ url('editarsip',$item->id) }}" class="btn btn-primary">Edit</a>
-                         
-                        <a href="{{ url('deletearsip',$item->id) }}" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </table>
+                @include('Admin.tablearsip',$dtarsip)
+            
             <br>
             {{ $dtarsip->links() }}
         </div>
@@ -101,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

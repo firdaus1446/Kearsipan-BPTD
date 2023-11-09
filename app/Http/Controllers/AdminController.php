@@ -46,8 +46,15 @@ class AdminController extends Controller
     {
         // dd($request->all());
     $foto_file = $request->file('foto');
-    $foto_ekstensi = $foto_file->extension();
-    $foto_nama = date('ymdhis').".". $foto_ekstensi;
+    // $foto_ekstensi = $foto_file->extension();
+    // $foto_nama = date('ymdhis').".". $foto_ekstensi;
+    $foto_nama_asli = $foto_file->getClientOriginalName();
+
+    // Dapatkan timestamp saat ini
+    $timestamp = date('is');
+
+    // Gabungkan nama asli dengan timestamp
+    $foto_nama = $timestamp . '_' . $foto_nama_asli;
     $foto_file->move(public_path('image'), $foto_nama);
 
 
@@ -56,6 +63,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'foto' => $foto_nama,
+            'level' => $request->level,
             'remember_token' => Str::random(10),
 
         ]);
@@ -99,12 +107,20 @@ class AdminController extends Controller
         $data = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'level' => $request->input('level'),
         ];
 
         if($request->hasFile('foto')){
             $foto_file = $request->file('foto');
-        $foto_ekstensi = $foto_file->extension();
-        $foto_nama = date('ymdhis').".". $foto_ekstensi;
+        // $foto_ekstensi = $foto_file->extension();
+        // $foto_nama = date('ymdhis').".". $foto_ekstensi;
+        $foto_nama_asli = $foto_file->getClientOriginalName();
+
+        // Dapatkan timestamp saat ini
+        $timestamp = date('is');
+
+        // Gabungkan nama asli dengan timestamp
+        $foto_nama = $timestamp . '_' . $foto_nama_asli;
         $foto_file->move(public_path('image'), $foto_nama);
 
         $us = User::findorfail($id);

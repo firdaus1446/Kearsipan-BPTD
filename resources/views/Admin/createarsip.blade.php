@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      <input type="text" id="nomor" name="nomor" class="form-control" placeholder="nomor">
                  </div>
                  <div class="form-group">
-                    <input type="text" id="jumlah_berkas" name="jumlah_berkas" class="form-control" placeholder="Jumlah">
+                    <input type="text" id="jumlah_berkas" name="jumlah_berkas" class="form-control" placeholder="Jumlah Berkas">
                 </div>
                 <div class="form-group">
                     <input type="text" id="no_item" name="no_item" class="form-control" placeholder="No Item">
@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

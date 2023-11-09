@@ -61,6 +61,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
                   </div>
                  </div>
+                 <select class="form-control" name="level" id="level">
+                  <option selected>pilih Level</option>
+                  <option value="admin">Admin</option>
+                  <option value="pegawai">Pegawai</option>
+              </select>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>
                      <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>
@@ -79,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

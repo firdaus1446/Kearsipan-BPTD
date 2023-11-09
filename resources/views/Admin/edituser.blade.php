@@ -47,9 +47,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body">
                 <form action="{{ url('updateuser',$us->id )}}" method="post" enctype="multipart/form-data">
                   {{ csrf_field() }}
+                  <th>Name</th>
                  <div class="form-group">
                      <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" value="{{ $us->name }}">
                  </div>
+                 <th>Email</th>
                  <div class="form-group">
                      <input type="email" id="email" name="email" class="form-control" placeholder="email" value="{{ $us->email }}">
                  </div>
@@ -62,6 +64,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th>Masukan Gambar</th>
               <input type="file" id="foto" name="foto" class="form-control" placeholder="image">
           </div>
+          <th>Level</th>
+          <select class="form-control" name="level" id="level">
+            <option selected>Pilih Level</option>
+            <option value="admin" {{ ($us->level === 'admin') ? 'selected' : '' }}>Admin</option>
+            <option value="pegawai" {{ ($us->level === 'pegawai') ? 'selected' : '' }}>Pegawai</option>
+        </select>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>
                      <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>

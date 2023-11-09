@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Sistem Kearsipan BPTD</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,9 +18,10 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="{{asset('gambar/logo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="{{asset('gambar/123.png')}}" alt="Logo"  style="opacity: .8">
     <br>
-    <a href="#"><b>Kearsipan BPTD Kelas II Kalimantan Selatan</b></a>
+    <h3>Direktorat Jenderal Kementerian Perhubungan</h3>
+    <h4>Balai Pengelola Transportasi Darat</h4>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -46,11 +47,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+          <div class="col-4">
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
           <!-- /.col -->
         </div>
@@ -69,5 +70,6 @@
 <script src="{{asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('AdminLTE/dist/js/adminlte.min.js')}}"></script>
+@include('sweetalert::alert')
 </body>
 </html>

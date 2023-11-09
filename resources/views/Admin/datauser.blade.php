@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card card-info card-outline">
               <div class="card-header">
                   <div class="card-tools">
-                      <a href="{{route ('createuser')}}" class="btn btn-success">Tambah User<i class="fas fa-plus-square"></i></a>
+                      <a href="{{route ('createuser')}}" class="btn btn-success">  Tambah User   <i class="fas fa-plus-square"></i></a>
                   </div>
               </div>
               <div class="card-body">
@@ -54,25 +54,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>Name</th>
                     <th>Email</th>
                     <th>Foto</th>
+                    <th>Level</th>
                     <th>Aksi</th>
                 </tr>
 
-                @foreach ($dtuser as $item) 
+                @foreach ($dtuser as $item => $items) 
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->name}}</td>
-                    <td>{{ $item->email}}</td>
+                    <td>{{ $dtuser->firstItem() + $item }}</td>
+                    <td>{{ $items->name}}</td>
+                    <td>{{ $items->email}}</td>
                     <td>
-                      @if ($item->foto)
-                        <img style="max-width:75px;max-height:75px" src="{{ url('image').'/'.$item->foto }}"/>
+                      @if ($items->foto)
+                        <img style="max-width:75px;max-height:75px" src="{{ url('image').'/'.$items->foto }}"/>
                           
                       @endif
                     </td>
+                    <td>{{ $items->level}}</td>
 
                     <td>
-                        <a href="{{ url('edituser',$item->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url('edituser',$items->id) }}" class="btn btn-primary">Edit</a>
                         {{-- <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger delete">Delete</a> --}}
-                        <a href="{{ url('deleteuser', $item->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                        <a href="{{ url('deleteuser', $items->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
                         {{-- <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a> --}}
 
 
@@ -98,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
