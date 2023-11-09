@@ -45,6 +45,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        if ($request->hasFile('foto')) {
     $foto_file = $request->file('foto');
     // $foto_ekstensi = $foto_file->extension();
     // $foto_nama = date('ymdhis').".". $foto_ekstensi;
@@ -56,6 +57,9 @@ class AdminController extends Controller
     // Gabungkan nama asli dengan timestamp
     $foto_nama = $timestamp . '_' . $foto_nama_asli;
     $foto_file->move(public_path('image'), $foto_nama);
+    } else {
+        $foto_nama = null;
+    }
 
 
         User::create([
