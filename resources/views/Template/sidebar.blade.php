@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{asset('gambar/logo.png')}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="#" class="brand-link">
+      <img src="{{ asset('gambar/123.png') }}" alt="Logo" style="opacity: 0.8; width: 70px; height: 35px;">
       <span class="brand-text font-weight-light">BPTD Kelas II Kalsel</span>
     </a>
 
@@ -10,10 +10,22 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ Auth::user()->foto }}" class="img-circle elevation-2" alt="User Image">
+          {{-- <img src="{{ Auth::user()->foto }}" class="img-circle elevation-2" alt="User Image"> --}}
+            @if(Auth::user()->foto)
+            @php
+        $fotoPath = 'image/' . Auth::user()->foto;
+        $size = getimagesize(public_path($fotoPath));
+        $width = $size[0];
+        $height = $size[1];
+        @endphp
+      <img src="{{ asset($fotoPath) }}" class="img-circle elevation-2" alt="User Image" width="{{ $width }}" height="{{ $height }}">
+            @else
+                <!-- Tambahkan gambar default jika tidak ada foto profil -->
+                <img src="{{ asset('gambar/logo.png') }}" class="img-circle elevation-2" alt="User Image">
+            @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block" style="font-size: 20px;">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -41,7 +53,7 @@
                 </a>
               </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle"></i>
               <p>
                 Akses Arsip
@@ -64,7 +76,7 @@
             </ul>
           </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle"></i>
               <p>
                 Akses User

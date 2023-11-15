@@ -89,4 +89,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('Template.script')
     @include('sweetalert::alert')
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const confirmDeleteButtons = document.querySelectorAll('[data-confirm-delete]');
+
+      confirmDeleteButtons.forEach(button => {
+          button.addEventListener('click', function (event) {
+              event.preventDefault(); // Mencegah tindakan penghapusan default
+
+              Swal.fire({
+                  title: 'Konfirmasi Penghapusan',
+                  text: 'Anda yakin ingin menghapus data ini?',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: 'Ya, Hapus',
+                  cancelButtonText: 'Batal',
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      // Jika pengguna menekan "Ya, Hapus", arahkan ke URL penghapusan
+                      window.location.href = button.getAttribute('href');
+                  }
+              });
+          });
+      });
+  });
+</script>
+
 </html>

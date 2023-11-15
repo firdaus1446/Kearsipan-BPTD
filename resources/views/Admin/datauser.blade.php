@@ -124,26 +124,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('Template.script')
     @include('sweetalert::alert')
 </body>
-{{-- <script>
-            $('.delete').click( function(){
-              // var nameid = $(this).attr($item->name)
-              Swal.fire({
-            title: 'Yakin ?',
-            text: "Kamu Menghapus User Ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-          });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Temukan semua elemen dengan atribut data-confirm-delete
+        const confirmDeleteButtons = document.querySelectorAll('[data-confirm-delete]');
+
+        // Tambahkan event listener ke masing-masing tombol
+        confirmDeleteButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault(); // Mencegah tindakan penghapusan default
+
+                // Tampilkan SweetAlert konfirmasi
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika pengguna menekan tombol "Yes", lanjutkan dengan menghapus data
+                        window.location.href = button.getAttribute('href');
+                    }
+                });
             });
-</script> --}}
+        });
+    });
+</script>
 </html>

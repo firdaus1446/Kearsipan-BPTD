@@ -49,12 +49,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   {{ csrf_field() }}
                   <th>Name</th>
                  <div class="form-group">
-                     <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" value="{{ $us->name }}">
-                 </div>
+                     <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" value="{{ $us->name }}">
+                     @error('name')
+                     <div class="invalid-feedback">Form Name Harus Diisi</div>
+                 @enderror
+                    </div>
                  <th>Email</th>
                  <div class="form-group">
-                     <input type="email" id="email" name="email" class="form-control" placeholder="email" value="{{ $us->email }}">
-                 </div>
+                     <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" value="{{ $us->email }}">
+                     @error('email')
+                     <div class="invalid-feedback">Form Email Harus Diisi</div>
+                 @enderror
+                    </div>
                  @if ($us->foto)
                 <div class="mb-3">
                   <img style="max-width:100px;max-height:100px" src="{{ url('image').'/'.$us->foto}}"/>
@@ -65,10 +71,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <input type="file" id="foto" name="foto" class="form-control" placeholder="image">
           </div>
           <th>Level</th>
-          <select class="form-control" name="level" id="level">
+          <select class="form-control @error('level') is-invalid @enderror" name="level" id="level">
             <option selected>Pilih Level</option>
             <option value="admin" {{ ($us->level === 'admin') ? 'selected' : '' }}>Admin</option>
             <option value="pegawai" {{ ($us->level === 'pegawai') ? 'selected' : '' }}>Pegawai</option>
+            @error('level')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
         </select>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>

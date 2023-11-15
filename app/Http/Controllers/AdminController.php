@@ -44,6 +44,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'name' => 'required|min:4',
+        'email' => 'required',
+        'password' => 'required|min:6',
+        'level' => 'required',
+    ]);
+       
         // dd($request->all());
         if ($request->hasFile('foto')) {
     $foto_file = $request->file('foto');
@@ -108,6 +115,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required',
+            'level' => 'required',
+        ]);
+
         $data = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),

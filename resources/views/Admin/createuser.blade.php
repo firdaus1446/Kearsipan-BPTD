@@ -49,23 +49,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form action="{{route('simpanuser')}}" method="post" enctype="multipart/form-data">
                  {{ csrf_field() }}
                  <div class="form-group">
-                     <input type="text" id="name" name="name" class="form-control" placeholder="Full Name">
+                     <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name">
+                     @error('name')
+                         <div class="invalid-feedback">Form Name Harus Diisi</div>
+                     @enderror
                  </div>
                  <div class="form-group">
-                     <input type="email" id="email" name="email" class="form-control" placeholder="email">
+                     <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email">
+                     @error('email')
+                         <div class="invalid-feedback">Form Email Harus Diisi</div>
+                     @enderror
                  </div>
                  <div class="form-group">
-                     <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                     <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                     @error('password')
+                         <div class="invalid-feedback">Form Password Harus Diisi</div>
+                     @enderror
                      <div class="form-group">
-                      <th>* Wajib Masukan Gambar</th>
+                      <th>* Opsional Masukan Gambar</th>
                       <input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
                   </div>
                  </div>
-                 <select class="form-control" name="level" id="level">
+                 <th>* Wajib Pilih Level</th>
+                 <select class="form-control @error('level') is-invalid @enderror" name="level" id="level">
                   <option selected>pilih Level</option>
                   <option value="admin">Admin</option>
                   <option value="pegawai">Pegawai</option>
+                  @error('level')
+                         <div class="invalid-feedback">{{ $message }}</div>
+                     @enderror
               </select>
+              <br>
                  <div class="form-group">
                      <button type="submit" class="btn btn-success">Simpan</button>
                      <a href="{{route ('datauser')}}" class="btn btn-primary">Kembali</a>

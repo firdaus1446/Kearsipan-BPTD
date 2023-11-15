@@ -31,7 +31,9 @@
         <td>
             <a href="{{ url('editarsip',$items->id) }}" class="btn btn-primary">Edit</a>
              
-            <a href="{{ url('deletearsip',$items->id) }}" class="btn btn-danger">Delete</a>
+            {{-- <a href="{{ url('deletearsip',$items->id) }}" class="btn btn-danger">Delete</a> --}}
+            <a href="{{ url('deletearsip', $items->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+
         </td>
     </tr>
     @endforeach
