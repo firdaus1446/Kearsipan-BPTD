@@ -72,12 +72,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  </div>
                  <th>* Wajib Pilih Level</th>
                  <select class="form-control @error('level') is-invalid @enderror" name="level" id="level">
-                  <option selected>pilih Level</option>
-                  <option value="admin">Admin</option>
-                  <option value="pegawai">Pegawai</option>
                   @error('level')
                          <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
+                  <option selected>pilih Level</option>
+                  <option value="admin">Admin</option>
+                  <option value="pegawai">Pegawai</option>
+                  
               </select>
               <br>
                  <div class="form-group">

@@ -45,6 +45,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
                 <a href="{{route ('exportarsip')}}" class="btn btn-success">Export Excel</a>
                   <div class="card-tools">
+                    <form action="{{ url('searcharsip') }}" method="GET" class="form-inline">
+                      <div class="input-group">
+                          <input type="text" name="keyword" class="form-control" placeholder="Cari Arsip">
+                          <div class="input-group-append">
+                              <button type="submit" class="btn btn-primary">Cari</button>
+                          </div>
+                      </div>
+                  </form>
                   </div>
               </div>
               <div class="card-body">
@@ -102,6 +110,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   text: 'Anda yakin ingin menghapus data ini?',
                   icon: 'warning',
                   showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
                   confirmButtonText: 'Ya, Hapus',
                   cancelButtonText: 'Batal',
               }).then((result) => {

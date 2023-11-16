@@ -1,15 +1,15 @@
 <table class="table table-bordered">
     <tr>
         <th>No</th>
-        <th>Kode Arsip</th>
-        <th>Informasi</th>
+        <th>Kode Klasifikasi Arsip</th>
+        <th> Uraian Informasi Berkas</th>
         <th>Nomor Berkas</th>
         <th>Jumlah</th>
-        <th>No Item</th>
-        <th>Isi</th>
+        <th>No Item Berkas</th>
+        <th>Uraian/Isi</th>
         <th>Kurun Waktu</th>
         <th>File</th>
-        <th>Keterangan</th>
+        <th>Keterangan/Jumlah</th>
         <th>Lokasi</th>
         <th>Aksi</th>
     </tr>
@@ -29,10 +29,14 @@
         <td>{{ $items->lokasi}}</td>
 
         <td>
-            <a href="{{ url('editarsip',$items->id) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ url('editarsip',$items->id) }}" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> Edit</a>
              
             {{-- <a href="{{ url('deletearsip',$items->id) }}" class="btn btn-danger">Delete</a> --}}
-            <a href="{{ url('deletearsip', $items->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+            @if (Auth::user()->level != 'admin')
+
+            @else
+            <a href="{{ url('deletearsip', $items->id) }}" class="btn btn-danger" data-confirm-delete="true"> <i class="fas fa-trash-alt"></i> Delete</a>
+            @endif
 
         </td>
     </tr>

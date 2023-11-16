@@ -43,8 +43,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content">
             <div class="card card-info card-outline">
               <div class="card-header">
-                  <div class="card-tools">
-                      <a href="{{route ('createuser')}}" class="btn btn-success">  Tambah User   <i class="fas fa-plus-square"></i></a>
+                  <div class="row align-items-center">
+                      <div class="col-md-6">
+                          <div class="card-tools">
+                              <a href="{{ route('createuser') }}" class="btn btn-success">Tambah User <i class="fas fa-plus-square"></i></a>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <form action="{{ route('searchuser') }}" method="GET" class="float-md-right">
+                              <div class="input-group">
+                                  <input type="text" name="keyword" class="form-control" placeholder="Cari User">
+                                  <div class="input-group-append">
+                                      <button type="submit" class="btn btn-primary">Cari</button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
                   </div>
               </div>
               <div class="card-body">
@@ -72,9 +86,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <td>{{ $items->level}}</td>
 
                     <td>
-                        <a href="{{ url('edituser',$items->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url('edituser',$items->id) }}" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> Edit</a>
                         {{-- <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger delete">Delete</a> --}}
-                        <a href="{{ url('deleteuser', $items->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                        <a href="{{ url('deleteuser', $items->id) }}" class="btn btn-danger" data-confirm-delete="true" ><i class="fas fa-trash-alt"></i> Delete</a>
                         {{-- <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a> --}}
 
 
@@ -136,14 +150,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 // Tampilkan SweetAlert konfirmasi
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'You will not be able to recover this data!',
+                    title: 'Konfirmasi Penghapusan',
+                    text: 'Anda yakin ingin menghapus data ini?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
+                    confirmButtonText: 'Ya, Hapus',
+                    cancelButtonText: 'Batal',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Jika pengguna menekan tombol "Yes", lanjutkan dengan menghapus data

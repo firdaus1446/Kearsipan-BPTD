@@ -1,8 +1,22 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+    <style>
+      .center-image {
+        display: block;
+        margin: auto;
+        opacity: 0.8;
+        width: 140px;
+        height: 80px;
+      }
+      .center-text {
+      text-align: center;
+    }
+    </style>
     <a href="#" class="brand-link">
-      <img src="{{ asset('gambar/123.png') }}" alt="Logo" style="opacity: 0.8; width: 70px; height: 35px;">
-      <span class="brand-text font-weight-light">BPTD Kelas II Kalsel</span>
+      <img src="{{ asset('gambar/123.png') }}" alt="Logo" class="center-image">
+      <h5 class="center-text">Balai Pengelola Transportasi</h5>
+      <h5 class="center-text"> Darat Kelas II</h5>
+      <h5 class="center-text"> Kalimantan Selatan</h5>
     </a>
 
     <!-- Sidebar -->
@@ -75,6 +89,8 @@
               </li>
             </ul>
           </li>
+          @if (Auth::user()->level != 'admin')
+          @else
           <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle"></i>
@@ -92,19 +108,44 @@
               </li>
             </ul>
           </li>
+          @endif
           <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-                
-              </p>
+            <a href="{{ route('logout') }}" class="nav-link" data-confirm-logout="true">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>Logout</p>
             </a>
-          </li>
+        </li>
         </ul>
       </nav>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmLogoutLinks = document.querySelectorAll('[data-confirm-logout]');
+    
+            confirmLogoutLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Mencegah tindakan logout default
+    
+                    Swal.fire({
+                        title: 'Konfirmasi Logout',
+                        text: 'Anda yakin ingin logout?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Logout',
+                        cancelButtonText: 'Batal',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Jika pengguna menekan "Ya, Logout", lakukan logout
+                            window.location.href = link.getAttribute('href');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
       <!-- /.sidebar-menu -->
     </div>
+
         
     <!-- /.sidebar -->
   </aside>

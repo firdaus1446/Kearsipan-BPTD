@@ -170,11 +170,22 @@ class ArsipController extends Controller
         return back()->with('info', 'Data Berhasil Di Hapus');
     }
 
-    // public function search(Request $request){
-    //     if($request->has('search')) {
-    //         $dtarsip = Arsip::where('kode_arsip','LIKE','%')
-    //     }
+    public function searchArsip(Request $request)
+{
+    $keyword = $request->input('keyword');
 
-    // }
+    $dtarsip = Arsip::where('kode_arsip', 'like', '%' . $keyword . '%')
+                    ->orWhere('informasi', 'like', '%' . $keyword . '%')
+                    ->orWhere('nomor', 'like', '%' . $keyword . '%')
+                    ->orWhere('jumlah_berkas', 'like', '%' . $keyword . '%')
+                    ->orWhere('no_item', 'like', '%' . $keyword . '%')
+                    ->orWhere('isi', 'like', '%' . $keyword . '%')
+                    ->orWhere('kurun_waktu', 'like', '%' . $keyword . '%')
+                    ->orWhere('file', 'like', '%' . $keyword . '%')
+                    ->orWhere('keterangan', 'like', '%' . $keyword . '%')
+                    ->orWhere('lokasi', 'like', '%' . $keyword . '%')
+                    ->paginate(10);
 
+    return view('Admin.dataarsip', compact('dtarsip'));
+}
 }

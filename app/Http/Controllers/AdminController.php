@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $dtuser = User::paginate(3);
+        $dtuser = User::paginate(5);
         return view('Admin.datauser',compact('dtuser'));
 
         $title = 'Delete User!';
@@ -173,4 +173,17 @@ class AdminController extends Controller
         // confirmDelete($title, $text);
         // return view('Admin.datauser', compact('dtuser'));
     }
+
+    public function searchUser(Request $request)
+    {
+    $keyword = $request->input('keyword');
+
+    $dtuser = User::where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('email', 'like', '%' . $keyword . '%')
+                    ->orWhere('level', 'like', '%' . $keyword . '%')
+                    ->paginate(5);
+
+    return view('Admin.datauser', compact('dtuser'));
+    }
+
 }

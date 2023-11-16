@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Sistem Kearsipan BPTD Kelas II Kalimantan Selatan</h1>
+            <h1 class="m-0">SISTEM KEARSIPAN BALAI PENGELOLA TRANSPORTASI DARAT KELAS II KALIMANTAN SELATAN</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           </div><!-- /.col -->
@@ -40,9 +40,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+          @if (Auth::user()->level != 'admin')
+
+          @else
           <div class="col-lg-3 col-6">
             <!-- small box -->
-
+           
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{ $jumlah_user }}</h3>
@@ -55,6 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{route ('datauser')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          @endif
 
           <div class="col-lg-3 col-6">
             <!-- small box -->

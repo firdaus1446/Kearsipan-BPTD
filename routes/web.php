@@ -43,6 +43,7 @@ Route::post('/simpanuser', [AdminController::class,'store'])->name('simpanuser')
 Route::get('/edituser/{id}', [AdminController::class,'edit'])->name('edituser');
 Route::post('/updateuser/{id}', [AdminController::class,'update'])->name('updateuser');
 Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('deleteuser');
+Route::get('/searchuser', [AdminController::class,'searchUser'])->name('searchuser');
 
 // Data Arsip
 Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip');
@@ -52,7 +53,7 @@ Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip'
 Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updatearsip');
 Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip');
 Route::get('/exportarsip', [ArsipController::class,'exportarsip'])->name('exportarsip');
-Route::get('/dataarsip/search', [ArsipController::class,'search'])->name('search');
+Route::get('/searcharsip', [ArsipController::class,'searchArsip'])->name('searcharsip');
 
 
 // Dashboard

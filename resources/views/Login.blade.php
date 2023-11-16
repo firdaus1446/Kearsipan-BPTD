@@ -16,13 +16,30 @@
   <link rel="stylesheet" href="{{asset('AdminLTE/dist/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+  <style>
+    body {
+      background-image: url("{{asset('gambar/background1.jpg')}}");
+      background-size: cover; /* Untuk mengisi seluruh area body */
+      background-position: center; /* Posisi gambar di tengah */
+      background-repeat: no-repeat; /* Tidak mengulang gambar */
+    }
+    h4, h5 {
+      color: white; /* Menetapkan warna teks menjadi putih */
+      padding: 10px; /* Menambahkan ruang di sekitar tulisan */
+      display: inline-block; /* Agar latar belakang mengelilingi teks */
+      text-shadow: 6px 6px 6px #000; /* Menambahkan outline hitam pada tulisan */
+    }
+
+  </style>
   <div class="login-logo">
-    <img src="{{asset('gambar/123.png')}}" alt="Logo"  style="opacity: .8">
+    <img src="{{asset('gambar/123.png')}}" alt="Logo"  style="opacity: .8 width: 150px; height: 150px;">
     <br>
-    <h3>Direktorat Jenderal Kementerian Perhubungan</h3>
-    <h4>Balai Pengelola Transportasi Darat</h4>
+    <h4>DIREKTORAT JENDERAL PERHUBUNGAN DARAT <br>
+      KEMENTERIAN PERHUBUNGAN REPUBLIK INDONESIA<br>
+      BALAI PENGELOLA TRANSPORTASI DARAT KELAS II KALIMANTAN SELATAN</h4>
   </div>
+<div class="login-box">
+  
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
