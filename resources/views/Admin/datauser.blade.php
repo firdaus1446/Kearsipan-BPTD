@@ -86,12 +86,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <td>{{ $items->level}}</td>
 
                     <td>
-                        <a href="{{ url('edituser',$items->id) }}" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> Edit</a>
-                        {{-- <a href="{{ url('deleteuser',$item->id) }}" class="btn btn-danger delete">Delete</a> --}}
-                        <a href="{{ url('deleteuser', $items->id) }}" class="btn btn-danger" data-confirm-delete="true" ><i class="fas fa-trash-alt"></i> Delete</a>
-                        {{-- <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a> --}}
-
-
+                      @if(Auth::user()->id != $items->id) <!-- Tambahkan baris ini untuk memeriksa apakah pengguna yang login bukan dirinya sendiri -->
+                      <a href="{{ url('edituser',$items->id) }}" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                      <a href="{{ url('deleteuser', $items->id) }}" class="btn btn-danger" data-confirm-delete="true"><i class="fas fa-trash-alt"></i> Delete</a>
+                  @else
+                      <!-- Tampilkan pesan atau tindakan lain jika pengguna mencoba mengedit atau menghapus dirinya sendiri -->
+                      <span class="text-muted">Tidak dapat mengedit atau menghapus diri sendiri</span>
+                  @endif
                     </td>
                 </tr>
                 @endforeach

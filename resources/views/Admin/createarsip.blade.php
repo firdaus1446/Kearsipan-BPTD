@@ -49,7 +49,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form action="{{route('simpanarsip')}}" method="post" enctype="multipart/form-data">
                  {{ csrf_field() }}
                  <div class="form-group">
-                     <input type="text" id="kode_arsip" name="kode_arsip" class="form-control" placeholder="Kode Arsip">
+                     <input type="text" id="kode_arsip" name="kode_arsip" class="form-control @error('kode_arsip') is-invalid @enderror" placeholder="Kode Arsip">
+                     @error('kode_arsip')
+                         <div class="invalid-feedback">Form Kode Arsip Harus Diisi</div>
+                     @enderror
                  </div>
                  <div class="form-group">
                      <input type="text" id="informasi" name="informasi" class="form-control" placeholder="informasi">

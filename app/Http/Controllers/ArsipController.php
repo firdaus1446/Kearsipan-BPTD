@@ -48,6 +48,11 @@ class ArsipController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kode_arsip' => 'required',
+        ]);
+
+
         //  dd($request->all());
         if ($request->hasFile('file')) {
         $doc = $request->file('file');

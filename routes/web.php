@@ -19,7 +19,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('Login');
-});
+})->middleware('isBeranda');
 
 Route::get('/login', function () {
     return view('Login');
@@ -37,23 +37,23 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 // Route::post('/simpanregistrasi', [LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
 
 // Data user
-Route::get('/datauser', [AdminController::class,'index'])->name('datauser');
-Route::get('/createuser', [AdminController::class,'create'])->name('createuser');
+Route::get('/datauser', [AdminController::class,'index'])->name('datauser')->middleware('isLogin');
+Route::get('/createuser', [AdminController::class,'create'])->name('createuser')->middleware('isLogin');
 Route::post('/simpanuser', [AdminController::class,'store'])->name('simpanuser');
-Route::get('/edituser/{id}', [AdminController::class,'edit'])->name('edituser');
+Route::get('/edituser/{id}', [AdminController::class,'edit'])->name('edituser')->middleware('isLogin');
 Route::post('/updateuser/{id}', [AdminController::class,'update'])->name('updateuser');
-Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('deleteuser');
-Route::get('/searchuser', [AdminController::class,'searchUser'])->name('searchuser');
+Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('deleteuser')->middleware('isLogin');
+Route::get('/searchuser', [AdminController::class,'searchUser'])->name('searchuser')->middleware('isLogin');
 
 // Data Arsip
-Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip');
-Route::get('/createarsip', [ArsipController::class,'create'])->name('createarsip');
+Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip')->middleware('isLogin');
+Route::get('/createarsip', [ArsipController::class,'create'])->name('createarsip')->middleware('isLogin');
 Route::post('/simpanarsip', [ArsipController::class,'store'])->name('simpanarsip');
-Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip');
+Route::get('/editarsip/{id}', [ArsipController::class,'edit'])->name('editarsip')->middleware('isLogin');
 Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updatearsip');
-Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip');
-Route::get('/exportarsip', [ArsipController::class,'exportarsip'])->name('exportarsip');
-Route::get('/searcharsip', [ArsipController::class,'searchArsip'])->name('searcharsip');
+Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip')->middleware('isLogin');
+Route::get('/exportarsip', [ArsipController::class,'exportarsip'])->name('exportarsip')->middleware('isLogin');
+Route::get('/searcharsip', [ArsipController::class,'searchArsip'])->name('searcharsip')->middleware('isLogin');
 
 
 // Dashboard
