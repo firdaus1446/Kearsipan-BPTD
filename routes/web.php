@@ -54,6 +54,7 @@ Route::post('/updatearsip/{id}', [ArsipController::class,'update'])->name('updat
 Route::get('/deletearsip/{id}', [ArsipController::class,'destroy'])->name('deletearsip')->middleware('isLogin');
 Route::get('/exportarsip', [ArsipController::class,'exportarsip'])->name('exportarsip')->middleware('isLogin');
 Route::get('/searcharsip', [ArsipController::class,'searchArsip'])->name('searcharsip')->middleware('isLogin');
+Route::get('/download/{file}', [ArsipController::class, 'download'])->name('download')->middleware('isLogin');
 
 
 // Dashboard

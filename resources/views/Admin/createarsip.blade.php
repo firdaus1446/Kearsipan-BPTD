@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                     <input type="date" id="kurun_waktu" name="kurun_waktu" class="form-control" placeholder="Kurun Waktu">
                 </div>
-                <th>* Wajib Upload File</th>
+                <th>* Opsional Upload File</th>
                 <div class="form-group">
                     <input type="file" id="file" name="file" class="form-control" placeholder="File">
                 </div>

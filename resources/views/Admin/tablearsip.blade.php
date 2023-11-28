@@ -24,7 +24,14 @@
         <td>{{ $items->no_item}}</td>
         <td>{{ $items->isi}}</td>
         <td>{{ $items->kurun_waktu}}</td>
-        <td>{{ $items->file}}</td>
+        <td>
+            {{ $items->file }}
+            @if ($items->file)
+                <a href="{{ url('download', $items->file) }}" class="btn btn-success" target="_blank">
+                    <i class="fas fa-download"></i> Unduh
+                </a>
+            @endif
+        </td>
         <td>{{ $items->keterangan}}</td>
         <td>{{ $items->lokasi}}</td>
 
