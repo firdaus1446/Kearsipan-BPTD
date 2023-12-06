@@ -31,6 +31,12 @@
       text-shadow: 6px 6px 6px #000; /* Menambahkan outline hitam pada tulisan */
     }
 
+    .whatsapp-icon {
+    width: 20px; /* Sesuaikan lebar logo sesuai kebutuhan */
+    height: auto; /* Biarkan tinggi disesuaikan secara otomatis */
+    margin-right: 8px; /* Sesuaikan margin antara logo dan teks */
+}
+
   </style>
   <div class="login-logo">
     <img src="{{asset('gambar/123.png')}}" alt="Logo"  style="opacity: .8 width: 150px; height: 150px;">
@@ -44,37 +50,21 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Silahkan Login Disini</p>
-
-      <form action="{{route('postlogin')}}" method="post">
-        {{ csrf_field() }}
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email"  placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password"  placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
+      <p class="login-box-msg">Hubungi Admin</p>
         <div class="row">
           <div class="col-4">
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-          </div>
-          <div class="col-4">
+          <div class="card-body login-card-body">
+            <a href="https://web.whatsapp.com/send?phone=6285654880040" target="_blank"
+                class="btn btn-success btn-block mb-2">
+                <img src="{{asset('gambar/wa.png')}}" alt="" class="whatsapp-icon">
+                Hubungi melalui WhatsApp
+            </a>
+            <a href="{{ url('/login') }}" class="btn btn-primary btn-block">Kembali</a>
+        </div>
+        
 
-          </div>
-              <a href="{{ route('lupapass') }}" style="padding-left: 220px;">Lupa Password?</a>
         
           <!-- /.col -->
         </div>

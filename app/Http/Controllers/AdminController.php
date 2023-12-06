@@ -18,7 +18,8 @@ class AdminController extends Controller
     public function index()
     {
         $dtuser = User::paginate(5);
-        return view('Admin.datauser',compact('dtuser'));
+        return view('Admin.datauser', compact('dtuser'));
+
 
         $title = 'Delete User!';
         $text = "Are you sure you want to delete?";
@@ -45,28 +46,28 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'name' => 'required|min:4',
-        'email' => 'required',
-        'password' => 'required|min:6',
-        'level' => 'required',
-    ]);
-       
+            'name' => 'required|min:4',
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'level' => 'required',
+        ]);
+
         // dd($request->all());
         if ($request->hasFile('foto')) {
-    $foto_file = $request->file('foto');
-    // $foto_ekstensi = $foto_file->extension();
-    // $foto_nama = date('ymdhis').".". $foto_ekstensi;
-    $foto_nama_asli = $foto_file->getClientOriginalName();
+            $foto_file = $request->file('foto');
+            // $foto_ekstensi = $foto_file->extension();
+            // $foto_nama = date('ymdhis').".". $foto_ekstensi;
+            $foto_nama_asli = $foto_file->getClientOriginalName();
 
-    // Dapatkan timestamp saat ini
-    $timestamp = date('is');
+            // Dapatkan timestamp saat ini
+            $timestamp = date('is');
 
-    // Gabungkan nama asli dengan timestamp
-    $foto_nama = $timestamp . '_' . $foto_nama_asli;
-    $foto_file->move(public_path('image'), $foto_nama);
-    } else {
-        $foto_nama = null;
-    }
+            // Gabungkan nama asli dengan timestamp
+            $foto_nama = $timestamp . '_' . $foto_nama_asli;
+            $foto_file->move(public_path('image'), $foto_nama);
+        } else {
+            $foto_nama = null;
+        }
 
 
         User::create([
@@ -103,7 +104,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $us = User::findorfail($id);
-        return view('Admin.edituser',compact('us'));
+        return view('Admin.edituser', compact('us'));
     }
 
     /**
@@ -118,34 +119,35 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'email' => 'required',
+            'password' => 'required',
             'level' => 'required',
         ]);
 
         $data = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
             'level' => $request->input('level'),
         ];
 
-        if($request->hasFile('foto')){
+        if ($request->hasFile('foto')) {
             $foto_file = $request->file('foto');
-        // $foto_ekstensi = $foto_file->extension();
-        // $foto_nama = date('ymdhis').".". $foto_ekstensi;
-        $foto_nama_asli = $foto_file->getClientOriginalName();
+            // $foto_ekstensi = $foto_file->extension();
+            // $foto_nama = date('ymdhis').".". $foto_ekstensi;
+            $foto_nama_asli = $foto_file->getClientOriginalName();
 
-        // Dapatkan timestamp saat ini
-        $timestamp = date('is');
+            // Dapatkan timestamp saat ini
+            $timestamp = date('is');
 
-        // Gabungkan nama asli dengan timestamp
-        $foto_nama = $timestamp . '_' . $foto_nama_asli;
-        $foto_file->move(public_path('image'), $foto_nama);
+            // Gabungkan nama asli dengan timestamp
+            $foto_nama = $timestamp . '_' . $foto_nama_asli;
+            $foto_file->move(public_path('image'), $foto_nama);
 
-        $us = User::findorfail($id);
-        File::delete(public_path('image').'/'.
-        $us->foto);
-        
-        $data['foto'] = $foto_nama;
+            $us = User::findorfail($id);
+            File::delete(public_path('image') . '/' .
+                $us->foto);
 
+            $data['foto'] = $foto_nama;
         }
 
         $us = User::findorfail($id);
@@ -162,7 +164,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $us = User::findorfail($id);
-        File::delete(public_path('image').'/'.$us->foto);
+        File::delete(public_path('image') . '/' . $us->foto);
         $us->delete();
         return back()->with('info', 'Data Berhasil Di Hapus');
 
@@ -176,14 +178,62 @@ class AdminController extends Controller
 
     public function searchUser(Request $request)
     {
-    $keyword = $request->input('keyword');
+        $keyword = $request->input('keyword');
 
-    $dtuser = User::where('name', 'like', '%' . $keyword . '%')
-                    ->orWhere('email', 'like', '%' . $keyword . '%')
-                    ->orWhere('level', 'like', '%' . $keyword . '%')
-                    ->paginate(5);
+        $dtuser = User::where('name', 'like', '%' . $keyword . '%')
+            ->orWhere('email', 'like', '%' . $keyword . '%')
+            ->orWhere('level', 'like', '%' . $keyword . '%')
+            ->paginate(5);
 
-    return view('Admin.datauser', compact('dtuser'));
+        return view('Admin.datauser', compact('dtuser'));
     }
 
+    public function profil()
+    {
+        $dtuser = User::paginate(5);
+        return view('Admin.profil', compact('dtuser'));
+    }
+
+    public function editprofil($id)
+    {
+        $us = User::findorfail($id);
+        return view('Admin.editprofil', compact('us'));
+    }
+
+    public function updateprofil(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ];
+
+        if ($request->hasFile('foto')) {
+            $foto_file = $request->file('foto');
+            // $foto_ekstensi = $foto_file->extension();
+            // $foto_nama = date('ymdhis').".". $foto_ekstensi;
+            $foto_nama_asli = $foto_file->getClientOriginalName();
+
+            // Dapatkan timestamp saat ini
+            $timestamp = date('is');
+
+            // Gabungkan nama asli dengan timestamp
+            $foto_nama = $timestamp . '_' . $foto_nama_asli;
+            $foto_file->move(public_path('image'), $foto_nama);
+
+            $us = User::findorfail($id);
+            File::delete(public_path('image') . '/' .
+                $us->foto);
+
+            $data['foto'] = $foto_nama;
+        }
+
+        $us = User::findorfail($id);
+        $us->update($data);
+        return redirect('profil')->with('success', 'Data Berhasil Di Update ');
+    }
 }

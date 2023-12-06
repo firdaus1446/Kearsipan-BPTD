@@ -39,7 +39,7 @@
             @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block" style="font-size: 20px;">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block" style="font-size: 20px;">{{ Auth::user()->name }}  ( {{ Auth::user()->level }} )</a>
         </div>
       </div>
 
@@ -109,6 +109,17 @@
             </ul>
           </li>
           @endif
+          
+          @if (Auth::user()->level != 'pegawai')
+          @else
+          <li class="nav-item">
+            <a href="{{ url('profil') }}" class="nav-link">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>Profil</p>
+            </a>
+          </li>
+          @endif
+         
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" data-confirm-logout="true">
                 <i class="nav-icon fas fa-sign-out-alt"></i>

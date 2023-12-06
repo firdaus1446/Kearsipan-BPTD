@@ -25,6 +25,8 @@ Route::get('/login', function () {
     return view('Login');
 })->middleware('isBeranda');
 
+Route::get('/lupapass', [LoginController::class,'lupapass'])->name('lupapass')->middleware('isBeranda');
+
 Route::get('/beranda', function () {
     return view('beranda');
 })->middleware('isLogin');
@@ -44,6 +46,9 @@ Route::get('/edituser/{id}', [AdminController::class,'edit'])->name('edituser')-
 Route::post('/updateuser/{id}', [AdminController::class,'update'])->name('updateuser');
 Route::get('/deleteuser/{id}', [AdminController::class,'destroy'])->name('deleteuser')->middleware('isLogin');
 Route::get('/searchuser', [AdminController::class,'searchUser'])->name('searchuser')->middleware('isLogin');
+Route::get('/profil', [AdminController::class,'profil'])->name('profil')->middleware('isLogin');
+Route::get('/editprofil/{id}', [AdminController::class,'editprofil'])->name('editprofil')->middleware('isLogin');
+Route::post('/updateprofil/{id}', [AdminController::class,'updateprofil'])->name('updateprofil');
 
 // Data Arsip
 Route::get('/dataarsip', [ArsipController::class,'index'])->name('dataarsip')->middleware('isLogin');

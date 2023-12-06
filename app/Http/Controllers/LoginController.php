@@ -14,7 +14,7 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email','password'))){
             return redirect('/beranda');
         }
-        return redirect('login');
+        return redirect('login')->with('error', 'Email atau password salah');
     }
 
     public function logout (Request $request){
@@ -22,6 +22,11 @@ class LoginController extends Controller
         return redirect('/login')->with('success', 'Berhasil Log Out ');
  
      }
+
+     public function lupapass()
+    {
+        return view('/lupapass');
+    }
         
     
 }
