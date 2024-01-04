@@ -54,6 +54,7 @@ class ArsipController extends Controller
     {
         $request->validate([
             'kode_arsip' => 'required',
+            'file' => 'nullable|mimes:xlsx,xls,doc,docx,pdf,ppt,pptx',
         ]);
 
 
@@ -125,6 +126,7 @@ class ArsipController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $data = [
             'kode_arsip' => $request->input('kode_arsip'),
             'informasi' => $request->input('informasi'),

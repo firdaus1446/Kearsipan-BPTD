@@ -72,10 +72,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="form-group">
                     <input type="date" id="kurun_waktu" name="kurun_waktu" class="form-control" placeholder="Kurun Waktu">
                 </div>
-                <th>* Opsional Upload File</th>
                 <div class="form-group">
-                    <input type="file" id="file" name="file" class="form-control" placeholder="File">
-                </div>
+                  <th>* Opsional Upload File (Excel, Word, PDF, PowerPoint)</th>
+                  <input type="file" id="file" name="file" class="form-control" accept=".xlsx, .xls, .doc, .docx, .pdf, .ppt, .pptx">
+                  @error('file')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+              </div>
                 <div class="form-group">
                     <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan">
                 </div>

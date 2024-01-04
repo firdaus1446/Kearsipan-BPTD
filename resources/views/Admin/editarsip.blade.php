@@ -78,8 +78,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <th>File </th><th>{{ $arsip->file }}</th>
                 <div class="form-group">
-                    <input type="file" id="file" name="file" class="form-control" placeholder="File">
-                </div>
+                  <input type="file" id="file" name="file" class="form-control" accept=".xlsx, .xls, .doc, .docx, .pdf, .ppt, .pptx">
+                  @error('file')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+              </div>
                 <th>Keterangan</th>
                 <div class="form-group">
                     <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan" value="{{ $arsip->keterangan }}">

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistem Kearsipan BPTD</title>
+  <title>Sistem Kearsipan BPTD Kalsel</title>
   <link rel="shortcut icon" href="{{asset('gambar/logo3.png')}}" type="image">
 
   <!-- Google Font: Source Sans Pro -->

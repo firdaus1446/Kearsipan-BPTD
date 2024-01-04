@@ -50,6 +50,7 @@ class AdminController extends Controller
             'email' => 'required',
             'password' => 'required|min:6',
             'level' => 'required',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png', // Sesuaikan dengan kebutuhan
         ]);
 
         // dd($request->all());

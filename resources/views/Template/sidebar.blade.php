@@ -14,9 +14,9 @@
     </style>
     <a href="#" class="brand-link">
       <img src="{{ asset('gambar/123.png') }}" alt="Logo" class="center-image">
-      <h5 class="center-text">Balai Pengelola Transportasi</h5>
-      <h5 class="center-text"> Darat Kelas II</h5>
-      <h5 class="center-text"> Kalimantan Selatan</h5>
+      <h6 class="center-text">Balai Pengelola Transportasi</h6>
+      <h6 class="center-text"> Darat Kelas II</h6>
+      <h6 class="center-text"> Kalimantan Selatan</h6>
     </a>
 
     <!-- Sidebar -->
@@ -35,11 +35,12 @@
       <img src="{{ asset($fotoPath) }}" class="img-circle elevation-2" alt="User Image" width="{{ $width }}" height="{{ $height }}">
             @else
                 <!-- Tambahkan gambar default jika tidak ada foto profil -->
-                <img src="{{ asset('gambar/logo.png') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('gambar/eror.png') }}" class="img-circle elevation-2" alt="User Image">
             @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block" style="font-size: 20px;">{{ Auth::user()->name }}  ( {{ Auth::user()->level }} )</a>
+          <a href="#" class="d-block" style="font-size: 20px;">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block" style="font-size: 20px;">( {{ Auth::user()->level }} )</a>
         </div>
       </div>
 

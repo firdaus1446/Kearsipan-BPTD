@@ -66,8 +66,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          <div class="invalid-feedback">Form Password Harus Diisi</div>
                      @enderror
                      <div class="form-group">
-                      <th>* Opsional Masukan Gambar</th>
-                      <input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
+                      <th>* Opsional Masukan Gambar (JPG, JPEG, PNG)</th>
+                      <input type="file" id="foto" name="foto" class="form-control" accept=".jpg, .jpeg, .png" placeholder="Foto">
+                      @error('foto')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
                   </div>
                  </div>
                  <th>* Wajib Pilih Level</th>

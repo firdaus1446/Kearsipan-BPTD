@@ -67,8 +67,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             @endif
             <div class="form-group">
-              <th>Masukan Gambar</th>
-              <input type="file" id="foto" name="foto" class="form-control" placeholder="image">
+              <th>Masukan Gambar (JPG, JPEG, PNG)</th>
+              <input type="file" id="foto" name="foto" class="form-control" accept=".jpg, .jpeg, .png" placeholder="image">
+              @error('foto')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
           </div>
         </select>
                  <div class="form-group">
